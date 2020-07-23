@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <configuration status="warn">
+	<appenders>
+		<Console name="STDOUT" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d{yyyy.MM.dd HH:mm:ss} - %m%n" charset="utf-8"/>
+		</Console>
+		<RollingFile name="FILE" fileName="logs/STC-24-J-HW.log"
+		    filePattern="logs/$${date:yyyy-MM}/STC-24-J-HW-%d{yyyyMMdd}.log.gz"
+		    immediateFlush="false" append="true">
+			<PatternLayout pattern = "%d{yyyy.MM.dd HH:mm:ss} [%-5p] (%c{1}:%M:%L) - %m%n"/>
+			<BurstFilter level="INFO" rate="0" maxBurst="0"/>
+			<TimeBasedTriggeringPolicy/>
+		</RollingFile>
+	</appenders>
+	<loggers>
+		<root level="info" additivity="false">
+			<appender-ref ref="STDOUT"/>
+			<appender-ref ref="FILE"/>
+		</root>
+	</loggers>
+</configuration>
